@@ -16,4 +16,4 @@ Please note that the installation details are explained based on AWS Cloud9.
 
 Currently, the number of agents is set to 3, and if you want to increase the number of agents, you can change the desiredCount setting to the bottom agentService in the ecs-ngrinder-stack.ts file in the lib directory.
 
-The delete operation will delete the resources created by issuing the command "cdk destroy" in the ecs-ngrinder directory.
+If you want to delete the generated resource, you can delete it from the ecs-ngrinder directory with the command "cdk destroy".
