@@ -1,14 +1,16 @@
-# Welcome to your CDK TypeScript project
+# Installing Ngrinder in ECS
 
-This is a blank project for TypeScript development with CDK.
+This is about installing Ngrinder in AWS ECS using CDK. 
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Please note that the installation details are explained based on AWS Cloud9.
 
-## Useful commands
+- Prerequisite: Set the IAM Role in Cloud9 to include the Administrator Access Policy
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+# Installation
+* git clone https://github.com/paulseo0827/ecs-ngrinder.git   
+* cd ecs-ngrinder
+* npm install
+* cdk diff
+* cdk deploy
+
+The delete operation will delete the resources created by issuing the command "cdk destroy" in the ecs-ngrinder directory.
