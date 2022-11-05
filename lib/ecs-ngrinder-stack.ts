@@ -10,6 +10,8 @@ import servicediscovery = require('aws-cdk-lib/aws-servicediscovery');
 export class EcsNgrinderStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
+	  
+    var tag = "3.5.3"
 
     const vpc = new ec2.Vpc(this, 'ngrinder-vpc', {
       cidr: '10.0.0.0/16',
@@ -41,7 +43,7 @@ export class EcsNgrinderStack extends cdk.Stack {
     });
 
     controllerFargateTaskDefinition.addContainer("controller", {
-	    image: ecs.ContainerImage.fromRegistry("ngrinder/controller"),
+	    image: ecs.ContainerImage.fromRegistry(`ngrinder/controller:${tag}`),
 	    portMappings: [{ containerPort: 80, hostPort: 80}, { containerPort: 12000, hostPort: 12000}, { containerPort: 12001, hostPort: 12001}, { containerPort: 12002, hostPort: 12002}, { containerPort: 12003, hostPort: 12003}, { containerPort: 12004, hostPort: 12004},{ containerPort: 12005, hostPort: 12005},{ containerPort: 12006, hostPort: 12006}, { containerPort: 12007, hostPort: 12007}, { containerPort: 12008, hostPort: 12008}, { containerPort: 12009, hostPort: 12009}, { containerPort: 16001, hostPort: 16001},],
 	    logging: ecs.LogDriver.awsLogs({ streamPrefix: 'ecs-ngrinder-controller' }),
     });
@@ -74,7 +76,7 @@ export class EcsNgrinderStack extends cdk.Stack {
     });
 
     agentFargateTaskDefinition.addContainer("agent", {
-	    image: ecs.ContainerImage.fromRegistry("ngrinder/agent"),
+	    image: ecs.ContainerImage.fromRegistry(`ngrinder/agent:${tag}`),
 	    command: [ "controller.ngrinderCloudMap:80" ],
 	    logging: ecs.LogDriver.awsLogs({ streamPrefix: 'ecs-ngrinder-agent' }),
     });
